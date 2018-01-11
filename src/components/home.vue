@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <div class="col-md-4">
-      <button v-on:click="login()">logout</button>
     </div>
     <div class="col-md-6">
       <div class="scrollbar" id="style-1">
@@ -22,17 +21,7 @@
 </template>
 
 <script>
-    const config = {
-        apiKey: "AIzaSyAEQG5nv-JzSjqWouBAO7kb1chLxgZqaTE",
-        authDomain: "live-chat-ff8c6.firebaseapp.com",
-        databaseURL: "https://live-chat-ff8c6.firebaseio.com",
-        projectId: "live-chat-ff8c6",
-        storageBucket: "live-chat-ff8c6.appspot.com",
-        messagingSenderId: "77388527191"
-    };
-    firebase.initializeApp(config);
 
-    const database = firebase.database();
 
     export default {
         name: 'app',
