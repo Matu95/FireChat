@@ -1,6 +1,76 @@
 <template>
   <div id="app">
-    <div class="col-md-4">
+    <div class="col-md-5">
+      <div class="container">
+        <div class="box">
+          <div class="box-header">
+            <div ><br>
+              <ul class="nav nav-pills">
+                <li><a href="">  </a></li>
+                <li class="actii class="af="#">Mensajes</a></li>
+                <li><a href="#">Contactos</a></li>
+                <li><a href="#">Mi perfil</a></li>
+                <li><a href="#">Configuracion</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="box-body">
+            <div class="list-wrapper">
+              <ul>
+                <li>
+                  <a class="" href="#">
+                    <img src="http://lorempixel.com/160/160/people/?1">
+                  </a>
+                  <div class="content">
+                    <a class="author" href="#">John Doe</a>
+                    <div class="subContent">I Do amazing stuff while co-founding almost everything.</div>
+                  </div>
+                </li>
+
+                <li>
+                  <a class="" href="#">
+                    <img src="http://lorempixel.com/160/160/people/?2">
+                  </a>
+                  <div class="content">
+                    <a class="author" href="#">John Doe</a>
+                    <div class="subContent">I Do amazing stuff while co-founding almost everything.</div>
+                  </div>
+                </li>
+
+                <li>
+                  <a class="" href="#">
+                    <img src="http://lorempixel.com/160/160/people/?3">
+                  </a>
+                  <div class="content">
+                    <a class="author" href="#">John Doe</a>
+                    <div class="subContent">I Do amazing stuff while co-founding almost everything.</div>
+                  </div>
+                </li>
+
+                <li>
+                  <a class="" href="#">
+                    <img src="http://lorempixel.com/160/160/people/?4">
+                  </a>
+                  <div class="content">
+                    <a class="author" href="#">John Doe</a>
+                    <div class="subContent">I Do amazing stuff while co-founding almost everything.</div>
+                  </div>
+                </li>
+
+                <li>
+                  <a class="" href="#">
+                    <img src="http://lorempixel.com/160/160/people/?5">
+                  </a>
+                  <div class="content">
+                    <a class="author" href="#">John Doe</a>
+                    <div class="subContent">I Do amazing stuff while co-founding almost everything.</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-md-6">
       <div class="scrollbar" id="style-1">
@@ -12,11 +82,10 @@
           </li>
         </ul>
       </div>
-      <form class="chat-window" @submit.prevent="sendMessage()">
+      <form @submit.prevent="sendMessage()">
         <input class="chat-window-message" type="text" autocomplete="off" autofocus v-model="user.message" required>
       </form>
     </div>
-    <div class="col-md-1"></div>
   </div>
 </template>
 
@@ -25,8 +94,8 @@
 
     export default {
         name: 'app',
-        created(){
-          database.ref('/chats').on('value', snapshot => this.loadMessage(snapshot.val()))
+        created() {
+            database.ref('/chats').on('value', snapshot => this.loadMessage(snapshot.val()))
         },
         data() {
             return {
@@ -41,7 +110,7 @@
         methods: {
             loadMessage(messages) {
                 this.messages = [];
-                for (let key in messages){
+                for (let key in messages) {
                     this.messages.push({
                         message: messages[key].message,
                         username: messages[key].username,
@@ -57,8 +126,8 @@
                     this.user.message = '';
                 });
             },
-            updateMessage(message, key){
-                database.ref('/chats/'+ key).update({
+            updateMessage(message, key) {
+                database.ref('/chats/' + key).update({
                     message: message.target.innerHTML
                 });
             }
@@ -72,6 +141,7 @@
     font-size: x-small;
     font-style: italic;
   }
+
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -87,7 +157,8 @@
   }
 
   .scrollbar {
-    height: 750px;
+    margin: 10px;
+    height: 570px;
     width: 100%;
     background: rgba(0, 0, 0, 0);
     overflow-y: auto;
@@ -103,7 +174,9 @@
     margin: 24px auto 0 auto;
     padding: 0 20px 0 0;
   }
-
+  a{
+    font: 16px/20px 'Noto Sans', sans-serif;
+  }
   .chat li {
     position: relative;
     clear: both;
@@ -204,7 +277,6 @@
 
   .chat-window-message {
     width: 100%;
-    height: 48px;
     font: 32px/48px 'Noto Sans', sans-serif;
     background: none;
     color: #0AD5C1;
@@ -293,4 +365,43 @@
     }
   }
 
+  .box
+  {
+    width: 500px;
+    height: 640px;
+    background-color: rgba(25, 147, 147, 0.2);
+    margin: 10px;
+  }
+
+
+/*
+Contactos
+*/
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  li {
+    margin-left: 25px;
+    display: flex;
+    margin-bottom: 25px;
+  }
+
+  img {
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+  }
+
+  .content{
+    margin-left: 10px;
+  }
+
+  a.author{
+    font-weight: 600;
+    font-size: 14px;
+    color: #000;
+  }
 </style>

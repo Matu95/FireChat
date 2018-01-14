@@ -7,11 +7,12 @@
         <label>E-mail</label>
         <p><input type="email" class="input" placeholder="@example.com" v-model="newUser.email"></p>
         <label>Password</label>
-        <p><input type="password" class="input" placeholder="contraseña" v-model="newUser.password"></p>
-        <label>Password</label>
-        <p><input type="password" class="input" placeholder="contraseña" disabled></p>
+        <p><input type="password" class="input" placeholder="***************" v-model="newUser.password"></p>
+        <label>Repeat Password</label>
+        <p><input type="password" class="input" placeholder="***************" v-model="newUser.repeatpassword"></p>
         <div style="margin-top: 25px">
-          <button type="submit" class="btn btn-default">Create acount</button>
+          <button class="btn btn-default" v-on:click="registerWithGoogle()" style="color: crimson"><i class="fa fa-google" aria-hidden="true"></i>   Register with Google</button>
+          <button type="submit" class="btn btn-default">Register now!</button>
         </div>
       </form>
     </div>
@@ -65,7 +66,8 @@
                 page: 1,
                 newUser: {
                     email: null,
-                    password: null
+                    password: null,
+                    repeatpassword: null,
                 },
                 dataUser: {
                     username: null,
@@ -77,23 +79,32 @@
         },
         methods: {
             SignUpPassOne() {
-                firebase.auth().createUserWithEmailAndPassword(
-                    this.newUser.email,
-                    this.newUser.password,
-                ).then(response => {
-                    this.dataUser.uid = response.uid;
-                    this.page = 2;
-                    this.newUser = {};
-                    iziToast.success({
-                        title: ':D',
-                        message: 'Se registro correctamente!',
+                if (this.newUser.password == this.newUser.repeatpassword) {
+                    firebase.auth().createUserWithEmailAndPassword(
+                        this.newUser.email,
+                        this.newUser.password,
+                    ).then(response => {
+                        this.dataUser.uid = response.uid;
+                        this.page = 2;
+                        this.newUser = {};
+                        iziToast.success({
+                            title: ':D',
+                            message: 'Se registro correctamente!',
+                        });
+                    }).catch(error => {
+                        iziToast.error({
+                            title: 'Error',
+                            message: error.message,
+                        });
                     });
-                }).catch(function (error) {
+                } else {
+                    this.newUser.password = null;
+                    this.newUser.repeatpassword = null;
                     iziToast.error({
                         title: 'Error',
-                        message: error.message,
+                        message: 'Las contraseñas no coinciden',
                     });
-                });
+                }
             },
             SignUpPassTwo() {
                 database.ref('/users').push({
@@ -107,6 +118,24 @@
                         message: 'Te registraste exitosamente, Muchas gracias!',
                     });
                     this.$router.push('/home');
+                });
+            },
+            registerWithGoogle(){
+                var provider = new firebase.auth.GoogleAuthProvider();
+                provider.addScope('https://www.googleapis.com/auth/plus.login')
+
+                firebase.auth().signInWithPopup(provider).then(response => {
+                    this.dataUser.uid = response.user.uid;
+                    this.newUser = {};
+                    iziToast.success({
+                        title: ':D',
+                        message: 'Se registro correctamente!',
+                    });
+                }).catch(error => {
+                    iziToast.error({
+                        title: 'Error',
+                        message: error.message,
+                    });
                 });
             },
             previewThumbnail(event) {
