@@ -1,0 +1,73 @@
+/* Amanecer */
+.dawn {
+    background: #355C7D;
+    background: -webkit-linear-gradient(to top, #C06C84, #6C5B7B, #355C7D);
+    background: linear-gradient(to top, #C06C84, #6C5B7B, #355C7D);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.dawnAnimated {
+    background: #355C7D;
+    background: -webkit-linear-gradient(-45deg, #C06C84, #6C5B7B, #355C7D);
+    background: linear-gradient(-45deg, #C06C84, #6C5B7B, #355C7D);
+}
+
+/* Vainilla */
+.vanilla {
+    background: #da4453;
+    background: -webkit-linear-gradient(to bottom, #da4453, #89216b);
+    background: linear-gradient(to bottom, #da4453, #89216b);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.vanillaAnimated {
+    background: #da4453;
+    background: -webkit-linear-gradient(-45deg, #da4453, #89216b);
+    background: linear-gradient(-45deg, #da4453, #89216b);
+}
+
+/* Volcano */
+.volcano {
+    background: #403A3E;
+    background: -webkit-linear-gradient(to bottom, #BE5869, #403A3E);
+    background: linear-gradient(to bottom, #BE5869, #403A3E);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.volcanoAnimated {
+    background: #403A3E;
+    background: -webkit-linear-gradient(-45deg, #BE5869, #403A3E);
+    background: -webkit-linear-gradient(-45deg, #BE5869, #403A3E);
+}
+
+/* Iris */
+.iris {
+    background: #40E0D0;
+    background: -webkit-linear-gradient(to top, #FF0080, #FF8C00, #40E0D0);
+    background: linear-gradient(to top, #FF0080, #FF8C00, #40E0D0);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.irisAnimated {
+    background: #40E0D0;
+    background: -webkit-linear-gradient(-45deg, #FF0080, #FF8C00, #40E0D0);
+    background: linear-gradient(-45deg, #FF0080, #FF8C00, #40E0D0);
+}
+
+/* IceCream */
+.icecream{
+    background: #ffd89b;
+    background: -webkit-linear-gradient(to bottom, #19547b, #ffd89b);
+    background: linear-gradient(to bottom, #19547b, #ffd89b);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.icecreamAnimated{
+    background: #ffd89b;
+    background: -webkit-linear-gradient(-45deg, #19547b, #ffd89b);
+    background: linear-gradient(-45deg, #19547b, #ffd89b);
+}

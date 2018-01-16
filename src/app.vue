@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+<div>
+  <router-view></router-view>
+</div>
 </template>
 
 <script>
@@ -17,29 +17,78 @@
 
     export default {
         name: 'app',
-        mounted() {
-            this.changedBackgorund()
+        created() {
+            this.loadTheme();
         },
         data() {
-            return {}
+            return {
+                themes: {
+                    1: 'dawnAnimated',
+                    2: 'vanillaAnimated',
+                    3: 'volcanoAnimated',
+                    4: 'irisAnimated',
+                    5: 'icecreamAnimated'
+                }
+            }
         },
         methods: {
-            changedBackgorund() {
-                $('#back').css({
-                    "background": this.moz,
-                    "background": this.webkit,
-                    "background-repeat": "no-repeat",
-                    "background-attachment": "fixed"
-                })
+            loadTheme() {
+                $('#theme').attr('class' , this.themeRand +' home');
             }
         },
         computed: {
-            moz(){
-                return "-moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)";
-            },
-            webkit(){
-                return "-webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)";
+            themeRand(){
+                var key = Math.floor(Math.random() * (6 - 1)) + 1;
+                return this.themes[key]
             }
         }
     }
+
 </script>
+<style>
+  .home {
+    background-size: 400% 400%;
+    -webkit-animation: Gradient 15s ease infinite;
+    -moz-animation: Gradient 15s ease infinite;
+    animation: Gradient 15s ease infinite;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  @-webkit-keyframes Gradient {
+    0% {
+      background-position: 0% 50%
+    }
+    50% {
+      background-position: 100% 50%
+    }
+    100% {
+      background-position: 0% 50%
+    }
+  }
+
+  @-moz-keyframes Gradient {
+    0% {
+      background-position: 0% 50%
+    }
+    50% {
+      background-position: 100% 50%
+    }
+    100% {
+      background-position: 0% 50%
+    }
+  }
+
+  @keyframes Gradient {
+    0% {
+      background-position: 0% 50%
+    }
+    50% {
+      background-position: 100% 50%
+    }
+    100% {
+      background-position: 0% 50%
+    }
+  }
+
+</style>

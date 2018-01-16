@@ -94,6 +94,9 @@
 
     export default {
         name: 'app',
+        mounted() {
+            this.theme();
+        },
         created() {
             database.ref('/chats').on('value', snapshot => this.loadMessage(snapshot.val()))
         },
@@ -108,6 +111,9 @@
             }
         },
         methods: {
+            theme() {
+                $('#theme').attr('class' ,'volcano');
+            },
             loadMessage(messages) {
                 this.messages = [];
                 for (let key in messages) {

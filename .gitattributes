@@ -1,4 +1,5 @@
 * text=auto
 *.css linguist-vendored
+*.css -text
 *.scss linguist-vendored
 CHANGELOG.md export-ignore
