@@ -19,7 +19,7 @@
               <ul>
                 <li>
                   <a class="" href="#">
-                    <img src="http://lorempixel.com/160/160/people/?1">
+                    <img  trasrc="http://lorempixel.com/160/160/people/?1">
                   </a>
                   <div class="content">
                     <a class="author" href="#">John Doe</a>

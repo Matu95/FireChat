@@ -1,36 +1,56 @@
 <template>
   <div align="center">
     <h1 style="margin-top: 170px">Welcome</h1>
-    <p><input type="text" class="input" placeholder="Username"></p>
-    <p><input type="text" class="input" placeholder="Password"></p>
-    <div style="margin-top: 25px">
-      <button class="btn btn-default" v-on:click="logIn()" style="color: crimson"><i class="fa fa-google" aria-hidden="true"></i>  Sign in with Google</button>
-      <router-link to="/register" tag="button" class="btn btn-default">Create acount</router-link>
-      <button class="btn btn-primary" v-on:click="">Log In</button>
-    </div>
+    <form @submit.prevent="signIn()">
+      <p><input v-model="user.email" type="email" class="input" placeholder="@example.com"></p>
+      <p><input v-model="user.password" type="password" class="input" placeholder="************"></p>
+      <div style="margin-top: 25px">
+        <button class="btn btn-default" v-on:click="logIn()" style="color: crimson"><i class="fa fa-google"></i> Sign in with Google</button>
+        <router-link to="/register" tag="button" class="btn btn-default">Create acount</router-link>
+        <button type="submit" class="btn btn-primary" v-on:click="" autofocus>Log In</button>
+      </div>
+    </form>
   </div>
 </template>
 
 <script>
+
     export default {
         name: 'login',
         data() {
             return {
-
+                user: {
+                    email: null,
+                    password: null
+                }
             }
         },
-        methods:{
-            logIn(){
+        methods: {
+            logIn() {
                 var provider = new firebase.auth.GoogleAuthProvider();
+
+                provider.setCustomParameters({
+                    'login_hint': 'user@example.com'
+                });
+
                 provider.addScope('https://www.googleapis.com/auth/plus.login');
-                firebase.auth().signInWithPopup(provider).then(function(result) {
+                firebase.auth().signInWithPopup(provider).then((result) => {
                     this.user.token = result.credential.accessToken;
                     this.user.username = result.user;
-                }).catch(function(error) {
-                    var errorCode     = error.code;
-                    var errorMessage  = error.message;
-                    var email         = error.email;
-                    var credential    = error.credential;
+                }).catch((error) => {
+                    alert(error.message);
+                });
+                console.log(provider);
+
+            },
+            signIn() {
+                firebase.auth().signInWithEmailAndPassword(
+                  'matti1020009@gmail.com',
+                  'Hogar123'
+                ).then((response) => {
+                    alert('exito');
+                }).catch((error) => {
+                    alert(error.message);
                 });
             }
         }

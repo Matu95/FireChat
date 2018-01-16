@@ -17,8 +17,29 @@
 
     export default {
         name: 'app',
+        mounted() {
+            this.changedBackgorund()
+        },
         data() {
             return {}
+        },
+        methods: {
+            changedBackgorund() {
+                $('#back').css({
+                    "background": this.moz,
+                    "background": this.webkit,
+                    "background-repeat": "no-repeat",
+                    "background-attachment": "fixed"
+                })
+            }
+        },
+        computed: {
+            moz(){
+                return "-moz-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)";
+            },
+            webkit(){
+                return "-webkit-linear-gradient(-45deg, #183850 0, #183850 25%, #192C46 50%, #22254C 75%, #22254C 100%)";
+            }
         }
     }
 </script>

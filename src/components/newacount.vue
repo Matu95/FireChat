@@ -12,7 +12,7 @@
         <p><input type="password" class="input" placeholder="***************" v-model="newUser.repeatpassword"></p>
         <div style="margin-top: 25px">
           <button class="btn btn-default" v-on:click="registerWithGoogle()" style="color: crimson"><i class="fa fa-google" aria-hidden="true"></i>   Register with Google</button>
-          <button type="submit" class="btn btn-default">Register now!</button>
+          <button type="submit" class="btn btn-default" autofocus>Register now!</button>
         </div>
       </form>
     </div>
@@ -126,6 +126,7 @@
 
                 firebase.auth().signInWithPopup(provider).then(response => {
                     this.dataUser.uid = response.user.uid;
+                    this.page = 2;
                     this.newUser = {};
                     iziToast.success({
                         title: ':D',
