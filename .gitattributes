@@ -1,5 +1,7 @@
 * text=auto
 *.css linguist-vendored
-*.css -text
-*.scss linguist-vendored
+
+CSS:
+src/assets/css/bootstrap.min.css
+src/assets/font-awesome-4.7.0/*.css
 CHANGELOG.md export-ignore
