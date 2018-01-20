@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './app.vue'
+import Store from './store'
 import {routes} from './routes'
+
 import 'izitoast/dist/css/iziToast.min.css'
 
 window.iziToast = require('izitoast');
@@ -15,6 +17,8 @@ const router = new VueRouter({
 
 new Vue({
     router,
+    Store,
     el: '#app',
-    render: h => h(App)
+    render: h => h(App),
+    methods: {},
 });

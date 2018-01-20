@@ -2,6 +2,6 @@
 *.css linguist-vendored
 
 CSS:
-src/assets/css/bootstrap.min.css
-src/assets/font-awesome-4.7.0/*.css
+src/assets/css/*.css linguist-vendored
+src/assets/font-awesome-4.7.0/*.css linguist-vendored
 CHANGELOG.md export-ignore
