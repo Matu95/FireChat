@@ -73,3 +73,7 @@ h5 {
     top: 0;
     cursor: pointer;
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}

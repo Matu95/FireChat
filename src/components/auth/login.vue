@@ -1,6 +1,6 @@
 <template>
     <div align="center">
-        <h1 style="margin-top: 170px">Welcome to 🔥FireChat</h1>
+        <h1 style="margin-top: 225px">Welcome to 🔥FireChat</h1>
         <p><input v-model="user.email" type="email" class="input" placeholder="@example.com"></p>
         <p><input v-model="user.password" type="password" class="input" placeholder="************"></p>
         <div style="margin-top: 25px">
@@ -28,7 +28,8 @@
                     this.user.email,
                     this.user.password
                 ).then((response) => {
-                    this.$router.push('/home');
+                    localStorage.setItem('userUID', response.uid);
+                    this.$router.push('/messages');
                 }).catch((error) => {
                     notifications_error(error.message);
                 });

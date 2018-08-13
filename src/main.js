@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './app.vue'
 import Store from './store'
-import {routes} from './routes'
+import {routes} from './router'
+import { Picker } from 'emoji-mart-vue'
 
 import 'izitoast/dist/css/iziToast.min.css'
 
